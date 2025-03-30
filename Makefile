@@ -320,6 +320,7 @@ $(OGG_WASM_LIB):
 
 vorbis-configure:
 	cd $(VORBIS_SRC); ./autogen.sh; sed -i '/Ogg >= 1.0 required !/d' configure
+	chmod +x $(VORBIS_SRC)/configure
 	cd $(VORBIS_SRC); CFLAGS="-Os -flto" emconfigure ./configure \
 	  --with-ogg=$(shell pwd)/$(OGG_SRC) \
 	  --disable-docs \
