@@ -5,10 +5,10 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
 	"features": {
-		"./emscripten": {} // TODO: configure which version (not only latest)
-	}
-
-	// additional install: libtool-bin
+		"./emscripten": {
+			"version": "3.1.51"
+		}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -17,7 +17,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y libtool-bin",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
