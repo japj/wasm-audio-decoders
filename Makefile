@@ -24,12 +24,12 @@ dist-clean:
 # puff
 COMMON_PATH=src/common/
 PUFF_SRC=$(COMMON_PATH)src/puff/
-PUFF_WASM_LIB=tmp/puff.bc
+PUFF_WASM_LIB=tmp/puff.a
 PUFF_EMSCRIPTEN_BUILD=$(COMMON_PATH)src/puff/Puff.wasm
 
 # @wasm-audio-decoders/flac
 FLAC_SRC=modules/flac/
-FLAC_WASM_LIB=tmp/flac.bc
+FLAC_WASM_LIB=tmp/flac.a
 FLAC_DECODER_PATH=src/flac/
 FLAC_EMSCRIPTEN_BUILD=$(FLAC_DECODER_PATH)src/EmscriptenWasm.tmp.js
 FLAC_DECODER_MODULE=$(FLAC_DECODER_PATH)dist/flac-decoder.js
@@ -111,14 +111,14 @@ opus-decoder-minify: $(OPUS_DECODER_EMSCRIPTEN_BUILD)
 	cp $(OPUS_DECODER_MODULE) $(OPUS_DECODER_MODULE_MIN) $(OPUS_DECODER_MODULE_MIN).map $(DEMO_PATH)
 
 # libopus
-OPUS_WASM_LIB=tmp/opus.bc
+OPUS_WASM_LIB=tmp/opus.a
 opus-wasmlib: $(OPUS_WASM_LIB)
 opus-wasmlib-clean: dist-clean
 	rm -rf $(OPUS_WASM_LIB)
 
 # mpg123-decoder
 MPG123_SRC=modules/mpg123/
-MPG123_WASM_LIB=tmp/mpg123.bc
+MPG123_WASM_LIB=tmp/mpg123.a
 MPG123_DECODER_PATH=src/mpg123-decoder/
 MPG123_EMSCRIPTEN_BUILD=$(MPG123_DECODER_PATH)src/EmscriptenWasm.tmp.js
 MPG123_MODULE=$(MPG123_DECODER_PATH)dist/mpg123-decoder.js
