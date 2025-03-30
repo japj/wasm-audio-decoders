@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 export EMSDK_DIR=/usr/local/emsdk
+EMSDK_VERSION=${EMSDK_VERSION:-latest}
 
 set -e
 
@@ -69,11 +70,11 @@ if [ ! -d "${EMSDK_DIR}" ]; then
     echo "Cloning the emsdk"
     git clone "https://github.com/emscripten-core/emsdk.git" ${EMSDK_DIR}
 
-    echo "Installing the latest EMSDK"
-    ${EMSDK_DIR}/emsdk install latest
+    echo "Installing EMSDK version: ${EMSDK_VERSION}"
+    ${EMSDK_DIR}/emsdk install ${EMSDK_VERSION}
 
-    echo "Activating the latest EMSDK"
-    ${EMSDK_DIR}/emsdk activate latest
+    echo "Activating EMSDK version: ${EMSDK_VERSION}"
+    ${EMSDK_DIR}/emsdk activate ${EMSDK_VERSION}
 
     updaterc "export EMSDK_DIR=${EMSDK_DIR}\n. ${EMSDK_DIR}/emsdk_env.sh"
 fi
